@@ -27,6 +27,6 @@ class Dog
     self
   end
 
-
+  def self.create(name:, breed:) self.new(name: name, breed: breed).save; self end
 
 end
