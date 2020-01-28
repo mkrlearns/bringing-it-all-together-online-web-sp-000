@@ -53,8 +53,8 @@ class Dog
     DB[:conn].execute('UPDATE dogs SET name = ?, breed = ? WHERE id = ?', self.name, self.breed, self.id)
   end
 
-  def self.db_query(query)
-    DB[:conn].execute(query).map { |row| self.new_from_db(row) }.first
+  def self.db_query(query, insert)
+    DB[:conn].execute(query, insert).map { |row| self.new_from_db(row) }.first
   end
 
 end
