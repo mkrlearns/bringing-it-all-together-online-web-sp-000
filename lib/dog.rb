@@ -34,7 +34,11 @@ class Dog
   end
 
   def self.find_by_name(name)
-    self.db_query('SELECT * FROM dogs WHERE name = ? LIMIT 1', name).first
+    self.db_query('SELECT * FROM dogs WHERE name = ? LIMIT 1', name)
+  end
+
+  def self.find_by_id(id)
+    self.db_query('SELECT * FROM dogs WHERE id = ? LIMIT 1', id)
   end
 
   def update
@@ -42,7 +46,7 @@ class Dog
   end
 
   def self.db_query(query)
-    DB[:conn].execute(query).map { |row| self.new_from_db(row) }
+    DB[:conn].execute(query).map { |row| self.new_from_db(row) }.first
   end
 
 end
