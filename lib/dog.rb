@@ -21,7 +21,7 @@ class Dog
   def self.drop_table() DB[:conn].execute('DROP TABLE IF EXISTS dogs') end
 
   def save
-    self.update; return if self.id
+    self.update; return self if self.id
     DB[:conn].execute('INSERT INTO dogs (name, breed) VALUES (?, ?)', self.name, self.breed)
     @id = DB[:conn].execute('SELECT last_insert_rowid() FROM dogs')[0][0]
     self
