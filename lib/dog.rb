@@ -54,7 +54,7 @@ class Dog
   end
 
   def self.db_query(query)
-    DB[:conn].execute(query).map { |row| self.new_from_db(row) }.first
+    DB[:conn].execute(query).map { |row| self.new_from_db(row) }
   end
 
 end
